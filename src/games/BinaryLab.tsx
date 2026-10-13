@@ -221,7 +221,13 @@ function Board({ onDone, onMistake }: { onDone: () => void; onMistake: () => voi
     if (bad.length === 0) {
       setSolved(true)
       sfx.correct()
-      confetti({ particleCount: 60, spread: 60, origin: { y: 0.7 }, colors: ['#ffffff', '#888888', '#333333'] })
+      const palette = getComputedStyle(document.documentElement)
+      confetti({
+        particleCount: 60,
+        spread: 60,
+        origin: { y: 0.7 },
+        colors: ['--strong', '--dim', '--faint'].map((name) => palette.getPropertyValue(name).trim()),
+      })
       setTimeout(advance, 900)
     } else {
       onMistake()

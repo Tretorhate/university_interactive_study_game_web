@@ -19,11 +19,12 @@ export function GameShell({ meta, errors, stars, onRestart, children }: Props) {
   useEffect(() => {
     if (stars === null) return
     sfx.win()
+    const palette = getComputedStyle(document.documentElement)
     confetti({
       particleCount: 130,
       spread: 80,
       origin: { y: 0.6 },
-      colors: ['#ffffff', '#bbbbbb', '#555555'],
+      colors: ['--strong', '--dim', '--faint'].map((name) => palette.getPropertyValue(name).trim()),
     })
   }, [stars])
 
