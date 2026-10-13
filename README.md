@@ -14,7 +14,7 @@
 - `canvas-confetti` — наградная анимация при прохождении
 - WebAudio API — синтезированные звуки, без файлов (`src/sfx.ts`)
 - ASCII-анимации: поле битов, scramble-эффект, тикер (`src/ascii.tsx`)
-- Vite, Bun
+- Vite, Bun, Wrangler, Cloudflare Pages
 
 ## Запуск
 
@@ -24,6 +24,18 @@ bun dev        # http://localhost:5173
 bun run build  # tsr generate + tsc + vite build
 ```
 
+## Публикация на Cloudflare Pages
+
+Сайт размещён на Cloudflare Pages: https://university-interactive-study-game-web.pages.dev/
+
+После входа в Wrangler (`bunx wrangler login`) опубликовать текущую версию можно так:
+
+```bash
+bun run deploy:pages
+```
+
+Скрипт собирает проект и отправляет `dist/` в Pages-проект `university-interactive-study-game-web` на ветку `main`.
+
 ## Структура
 
 | Маршрут            | Содержимое                                                              |
@@ -32,7 +44,7 @@ bun run build  # tsr generate + tsc + vite build
 | `/theory`          | Теория: 5 форм информации с примерами + блок про двоичный код           |
 | `/map`             | Карта игр с прогрессом (звёзды, из localStorage)                        |
 | `/levels/types`    | Drag & drop: карточки-примеры → корзины форм (серия/стрик)              |
-| `/levels/forms`    | Пары: найди одинаковую информацию в двух разных формах (2 доски по 4)   |
+| `/levels/forms`    | Пары: 12 из 16 случайных пар за запуск, 3 доски по 4                    |
 | `/levels/binary`   | Перевод битов ↔ десятичные и шестнадцатеричные числа, веса разрядов     |
 | `/results`         | Результаты по цели 5.2.1.1, сброс прогресса                             |
 

@@ -4,6 +4,5 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/university_interactive_study_game_web/',
   plugins: [tanstackRouter({ target: 'react' }), react()],
 })
